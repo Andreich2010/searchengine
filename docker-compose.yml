@@ -1,0 +1,19 @@
+version: "3.9"
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: searchengine-mysql
+    restart: unless-stopped
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_DATABASE: search_engine
+      MYSQL_USER: search_user
+      MYSQL_PASSWORD: search_pass
+      MYSQL_ROOT_PASSWORD: root_pass
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+volumes:
+  mysql_data:
